@@ -1,0 +1,38 @@
+This module aims to provide protection from aggressive clients 
+by blocking or reporting them with a script.
+
+You will be able to add a limit of simmultaneous connections. 
+When this limit is reached the module will execute the defined 
+command.
+
+You can then write a simple bash script that can run commands 
+with sudo(8) in order to limit the client or notify the admins.
+
+The module provides two options:
+  IPBlockLimit - the number of simmultaneous connections on 
+	which the module will execute the command defined by IPBlockCmd
+  IPBlockCmd - the command that will be executed when the limit 
+	is reached
+
+The script receives the following arguments:
+ $1 - the offending IP address
+ $2 - the number of simmultaneous connections
+ $3 - the limit set in the httpd.conf
+ $4 - the last URL that was accessed
+
+Example configuration:
+
+<IfModule mod_ipblock.c>
+	IPBlockLimit 1000
+	IPBlockCmd "/usr/local/bin/block"
+</IfModule>
+
+Here is an example of the arguments that the script receives:
+ 127.0.0.1 3 2 gamelon/resources/css/visual
+
+For more information and comments:
+
+  Jabber: hackman@jabber.org
+  ICQ: 7556201
+  Marian Marinov <mm@yuhu.biz>
+  URL: http://github.com/hackman/mod_ipblock
