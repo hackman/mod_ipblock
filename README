@@ -28,7 +28,7 @@ Example configuration:
 </IfModule>
 
 Here is an example of the arguments that the script receives:
- 127.0.0.1 3 2 gamelon/resources/css/visual
+ 127.0.0.1 3 2 example.com/path/to/some/file
 
 For more information and comments:
 
